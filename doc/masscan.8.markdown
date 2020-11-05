@@ -41,7 +41,7 @@ one port.
     packets. This can be very small numbers, like `0.1` for transmitting 
     packets at rates of one every 10 seconds, for very large numbers like 
     10000000, which attempts to transmit at 10 million packets/second. In my
-    experience, Windows and can do 250 thousand packets per second, and latest
+    experience, Windows and can do 250 thousand packets per second, and the latest
     versions of Linux can do 2.5 million packets per second. The PF_RING driver
     is needed to get to 25 million packets/second.
 
@@ -64,7 +64,7 @@ one port.
     specified, then the first IP address bound to the network interface
 	will be used. Instead of a single IP address, a range may be specified.
 	NOTE: The size of the range must be an even power of 2, such as 1, 2, 4,
-	8, 16, 1024 etc. addresses.
+	8, 16, 1024, etc. addresses.
 
   * `--adapter-port <port>`: send packets using this port number as the
     source. If not specified, a random port will be chosen in the range 40000
@@ -111,7 +111,7 @@ one port.
     that since this scanner is stateless, retries are sent regardless if
 	replies have already been received.
 
-  * `--nmap`: print help aobut nmap-compatibility alternatives for these
+  * `--nmap`: print help about nmap-compatibility alternatives for these
     options.
 
   * `--pcap-payloads`: read packets from a libpcap file containing packets
@@ -130,7 +130,7 @@ one port.
 
   * `--show [open,closed]`: tells which port status to display, such
     as 'open' for those ports that respond with a SYN-ACK on TCP, or
-	'closed' for those ports that repsond with RST. The default is
+	'closed' for those ports that respond with RST. The default is
 	only to display 'open' ports.
 
   * `--noshow [open,closed]`: disables a port status to display, such
@@ -146,7 +146,7 @@ one port.
   * `--pfring`: force the use of the PF_RING driver. The program will exit
     if PF_RING DNA drvers are not available.
 
-  * `--resume-index`: the point in the scan at when it was paused.
+  * `--resume-index`: the point in the scan when it was paused.
 
   * `--resume-count`: the maximum number of probes to send before exiting.
     This is useful with the `--resume-index` to chop up a scan and split
@@ -166,7 +166,7 @@ one port.
 	Times are aligned on an even boundary, so if "daily" is specified,
 	then the file will be rotated every day at midnight.
 
-  * `--rotate-offset <time>`: an offset in the time. This is to accomodate
+  * `--rotate-offset <time>`: an offset in the time. This is to accommodate
     timezones.
 
   * `--rotate-size <size>`: rotates the output file when it exceeds the
@@ -180,7 +180,7 @@ one port.
     Using a different seed will cause packets to be sent in a different
 	random order. Instead of an integer, the string `time` can be specified,
 	which seeds using the local timestamp, automatically generating a 
-	differnet random order of scans. If no seed specified, `time` is the
+	different random order of scans. If no seed specified, `time` is the
 	default.
 
   * `--regress`: run a regression test, returns '0' on success and '1' on
@@ -216,14 +216,14 @@ one port.
 	`xml` will be used.
 		   
   * `-oB <filename>`: sets the output format to binary and saves the output in
-    the given filename. This is equivelent to using the `--output-format` and
+    the given filename. This is equivalent to using the `--output-format` and
     `--output-filename` parameters. The option `--readscan` can then be used to
-    read the binary file. Binary files are mush smaller than their XML
-    equivelents, but require a separate step to convert back into XML or
+    read the binary file. Binary files are much smaller than their XML
+    equivalents, but require a separate step to convert back into XML or
     another readable format.
 	
   * `-oX <filename>`: sets the output format to XML and saves the output in the
-    given filename. This is equivelent to using the `--output-format xml` and
+    given filename. This is equivalent to using the `--output-format xml` and
     `--output-filename` parameters.
 	
   * `-oG <filename>`: sets the output format to grepable and saves the output 
@@ -255,7 +255,7 @@ one port.
 
   * `--hello-file[<port>] <filename>`: send the contents of the file once the 
     TCP connection has been established with the given port. Requires that
-    `--banners` also be set. Heuristics will be performed on the reponse in
+    `--banners` also be set. Heuristics will be performed on the response in
     an attempt to discover what protocol, so HTTP responses will be parsed
     differently than other protocols.
 
@@ -329,13 +329,13 @@ If the user-mode stack shares the same IP address as the operating-system,
 then the kernel will send RST packets during a scan. This can cause
 unnecessary traffic during a simple port scan, and will terminate TCP
 connections when doing a `--banners` scan. To prevent, this, the built-in
-firewall should be used to filte the source ports. On Linux, this can be done
+firewall should be used to filter the source ports. On Linux, this can be done
 by doing something like:
 
     # iptables -A INPUT -i eth0 -p tcp --dport 44444 -j DROP
     
 This will prevent the Linux kernel from processing incoming packets to port
-44444, but `masscan` will still see the packets. Set the maching parameter
+44444, but `masscan` will still see the packets. Set the matching parameter
 of `--adapter-port 44444` to force `masscan` to use that port instead of
 a random port.
     
@@ -392,7 +392,7 @@ work.
 ## SPURIOUS RESETS
 
 When scanning TCP using the default IP address of your adapter, the built-in
-stack will generate RST packets. This will prevent banner grabbing. There are
+stack will generate RST packets. This will prevent banner grabbing. There
 are two ways to solve this. The first way is to create a firewall rule
 to block that port from being seen by the stack. How this works is dependent
 on the operating system, but on Linux this looks something like:
